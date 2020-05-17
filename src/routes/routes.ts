@@ -40,7 +40,7 @@ router.get('/login', (req: Request, res: Response): void => {
   `);
 });
 
-router.post('/login', (req, res: Response): void => {
+router.post('/login', (req: RequestWithBody, res: Response): void => {
   const { email, password } = req.body;
 
   if (email && password && email === 'express@typescript.com' && password === 'expresswithtypescript') {
