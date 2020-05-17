@@ -1,0 +1,20 @@
+{
+  "name": "express-with-typescript",
+  "version": "1.0.0",
+  "description": "_An express application that presents a simple login process using type annotations of TypeScript, or Decorators of TypeScript and Metadata API for ECMAScript_",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Junjie-Chen/express-with-typescript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Junjie-Chen/express-with-typescript/issues"
+  },
+  "homepage": "https://github.com/Junjie-Chen/express-with-typescript#readme"
+}
