@@ -35,3 +35,15 @@ router.get('/login', (req: Request, res: Response): void => {
     </form>
   `);
 });
+
+router.post('/login', (req, res: Response): void => {
+  const { email, password } = req.body;
+
+  if (email && password && email === 'express@typescript.com' && password === 'expresswithtypescript') {
+    req.session = { isLoggedIn: true };
+
+    res.redirect('/');
+  } else {
+    res.send('You provided an invalid email or password.');
+  }
+});
