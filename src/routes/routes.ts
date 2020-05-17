@@ -68,6 +68,6 @@ router.get('/logout', (req: Request, res: Response): void => {
   res.redirect('/');
 });
 
-router.get('/protected', (req: Request, res: Response): void => {
+router.get('/protected', requireAuth, (req: Request, res: Response): void => {
   res.send('You are permitted to visit this page.');
 });
