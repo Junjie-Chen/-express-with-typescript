@@ -51,3 +51,9 @@ router.post('/login', (req: RequestWithBody, res: Response): void => {
     res.send('You provided an invalid email or password.');
   }
 });
+
+router.get('/logout', (req: Request, res: Response): void => {
+  req.session = undefined;
+
+  res.redirect('/');
+});
