@@ -1,7 +1,17 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 
 interface RequestWithBody extends Request {
   body: { [property: string]: string | undefined };
+}
+
+function requireAuth(req: Request, res: Response, next: NextFunction): void {
+  if (req.session && req.session.isLoggedIn) {
+    next();
+
+    return;
+  }
+
+  res.status(403).send('You are not permitted to visit this page.');
 }
 
 const router = Router();
