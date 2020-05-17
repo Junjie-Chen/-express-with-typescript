@@ -1,5 +1,9 @@
 import { Router, Request, Response } from 'express';
 
+interface RequestWithBody extends Request {
+  body: { [property: string]: string | undefined };
+}
+
 const router = Router();
 
 router.get('/', (req: Request, res: Response): void => {
