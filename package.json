@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Junjie-Chen/express-with-typescript#readme",
   "devDependencies": {
     "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
   }
 }
