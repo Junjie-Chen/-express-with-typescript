@@ -1,5 +1,15 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { get } from './decorators';
+
+function requireAuth(req: Request, res: Response, next: NextFunction): void {
+  if (req.session && req.session.isLoggedIn) {
+    next();
+
+    return;
+  }
+
+  res.status(403).send('You are not permitted to visit this page.');
+}
 
 export class RootController {
   @get('/')
