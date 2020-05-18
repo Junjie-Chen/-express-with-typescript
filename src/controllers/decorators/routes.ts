@@ -13,3 +13,4 @@ export function createRoute(method: string): Function {
 }
 
 export const get = createRoute(Methods.Get);
+export const post = createRoute(Methods.Post);
