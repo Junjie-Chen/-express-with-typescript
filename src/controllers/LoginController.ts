@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import { get, post, validator } from './decorators';
+import { controller, get, post, validator } from './decorators';
 
+@controller('/auth')
 export class LoginController {
   @get('/login')
   getLogin(req: Request, res: Response): void {
