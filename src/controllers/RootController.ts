@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { get } from './decorators';
+import { get, use } from './decorators';
 
 function requireAuth(req: Request, res: Response, next: NextFunction): void {
   if (req.session && req.session.isLoggedIn) {
@@ -32,6 +32,7 @@ export class RootController {
   }
 
   @get('/protected')
+  @use(requireAuth)
   getProtected(req: Request, res: Response): void {
     res.send('You are permitted to visit this page.');
   }
