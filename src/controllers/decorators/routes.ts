@@ -16,3 +16,4 @@ export const get = createRoute(Methods.Get);
 export const post = createRoute(Methods.Post);
 export const put = createRoute(Methods.Put);
 export const patch = createRoute(Methods.Patch);
+export const del = createRoute(Methods.Delete);
