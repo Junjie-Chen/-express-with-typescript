@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { Keys } from './Keys';
+import { Methods } from './Methods';
 
 export function createRoute(method: string): Function {
   return function(path: string): Function {
@@ -10,3 +11,5 @@ export function createRoute(method: string): Function {
     };
   };
 }
+
+export const get = createRoute(Methods.Get);
