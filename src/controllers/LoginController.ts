@@ -32,6 +32,7 @@ export class LoginController {
     }
   }
 
+  @get('/logout')
   getLogout(req: Request, res: Response): void {
     req.session = undefined;
 
