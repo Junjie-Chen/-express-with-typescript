@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
+import { get } from './decorators';
 
 export class RootController {
+  @get('/')
   getRoot(req: Request, res: Response): void {
     if (req.session && req.session.isLoggedIn) {
       res.send(`
