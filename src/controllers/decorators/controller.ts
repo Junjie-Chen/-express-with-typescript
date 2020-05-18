@@ -1,4 +1,8 @@
+import 'reflect-metadata';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
+import { Keys } from './Keys';
+import { Methods } from './Methods';
+import { Router } from '../../Router';
 
 function validate(properties: string[]): RequestHandler {
   return function(req: Request, res: Response, next: NextFunction): void {
@@ -17,5 +21,29 @@ function validate(properties: string[]): RequestHandler {
     }
 
     next();
+  };
+}
+
+export function controller(prefix: string): Function {
+  return function(target: Function): void {
+    const router = Router.createRouter();
+
+    for (let key in target.prototype) {
+      const method: Methods = Reflect.getMetadata(Keys.Method, target.prototype, key);
+
+      const path = Reflect.getMetadata(Keys.Path, target.prototype, key);
+
+      const middlewares = Reflect.getMetadata(Keys.Middleware, target.prototype, key) || [];
+
+      const properties = Reflect.getMetadata(Keys.Validator, target.prototype, key) || [];
+
+      const validator = validate(properties);
+
+      const requestHandler = target.prototype[key];
+
+      if (path) {
+        router[method](`${prefix}${path}`, ...middlewares, validator, requestHandler);
+      }
+    }
   };
 }
