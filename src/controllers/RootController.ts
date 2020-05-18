@@ -18,4 +18,8 @@ export class RootController {
       `);
     }
   }
+
+  getProtected(req: Request, res: Response): void {
+    res.send('You are permitted to visit this page.');
+  }
 }
