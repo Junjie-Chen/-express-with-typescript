@@ -28,4 +28,10 @@ export class LoginController {
       res.send('You provided an invalid email or password.');
     }
   }
+
+  getLogout(req: Request, res: Response): void {
+    req.session = undefined;
+
+    res.redirect('/');
+  }
 }
