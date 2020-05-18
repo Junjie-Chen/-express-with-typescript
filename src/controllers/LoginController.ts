@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { get, post } from './decorators';
+import { get, post, validator } from './decorators';
 
 export class LoginController {
   @get('/login')
@@ -20,6 +20,7 @@ export class LoginController {
   }
 
   @post('/login')
+  @validator('email', 'password')
   postLogin(req: Request, res: Response): void {
     const { email, password } = req.body;
 
