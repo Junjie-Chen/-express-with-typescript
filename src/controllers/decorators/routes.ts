@@ -1,10 +1,11 @@
 import 'reflect-metadata';
+import { RequestHandlerDescriptor } from '../../interfaces/RequestHandlerDescriptor';
 import { Keys } from './Keys';
 import { Methods } from './Methods';
 
 export function createRoute(method: string): Function {
   return function(path: string): Function {
-    return function(target: any, key: string): void {
+    return function(target: any, key: string, desc: RequestHandlerDescriptor): void {
       Reflect.defineMetadata(Keys.Method, method, target, key);
 
       Reflect.defineMetadata(Keys.Path, path, target, key);
